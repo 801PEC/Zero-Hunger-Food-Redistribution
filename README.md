@@ -1,134 +1,353 @@
-# Zero Hunger: AI-Integrated Food Rescue and Safety Management Platform
+<img width="1924" height="1003" alt="image" src="https://github.com/user-attachments/assets/af60dbdd-92bf-4b00-ba9b-8e6af91369cb" /># 🍽️ ZeroHunger
 
-Zero Hunger is a sophisticated full-stack application designed to optimize the redistribution of surplus food from commercial entities to non-governmental organizations (NGOs). The platform implements advanced risk assessment through Large Language Models (LLMs), real-time environmental data integration, and automated logistical matching to ensure food safety and efficiency.
+### AI-Powered Food Redistribution & Safety Management Platform
 
----
+ZeroHunger is a full-stack web application that helps reduce food waste by connecting restaurants, hotels, colleges, and event organizers with NGOs that can redistribute surplus food to communities in need.
 
-## Technical Overview
-
-The platform serves three distinct user roles—Restaurants, NGOs, and Administrators—providing each with a tailored dashboard and set of management tools. The core value proposition lies in its ability to quantify food safety risks dynamically and facilitate immediate rescue operations through intelligent data processing.
-
-### Core Algorithmic Features
-
-#### 1. Large Language Model Risk Assessment
-The system utilizes the **Google Gemini 1.5 Flash** model to perform real-time safety audits on donated food. By processing natural language inputs regarding food type, preparation time, and quantity, the model generates:
-- **Risk Classification**: Categorization into Low, Medium, High, or Critical risk levels.
-- **Safety Benchmarking**: Calculation of remaining safe consumption windows.
-- **Actionable Intelligence**: Specific recommendations for storage and distribution handling.
-
-#### 2. Meteorological Impact Integration
-To account for environmental variables, the backend integrates with the **Open-Meteo API**.
-- **Dynamic Scoring**: The system retrieves local temperature data at the point of origin.
-- **Thermal Degradation Factor**: Higher ambient temperatures trigger a proportional reduction in the food's safety score, accelerating the urgency of pickup for perishable items.
-
-#### 3. Logistical Matchmaking Algorithm
-The platform automates the connection between donors and recipients using a multi-factor scoring algorithm:
-- **Geospatial Proximity**: Calculation of distances using the **Haversine Formula**.
-- **Capacity Analysis**: Matching food volume against NGO storage and distribution capabilities.
-- **Urgency Weighting**: Prioritizing "Critical" risk posts for immediate NGO notification and matching.
-- **Geocoding Fallback**: Implementation of OpenStreetMap (Nominatim) for address-to-coordinate conversion when GPS data is unavailable.
+The platform combines **Generative AI**, **real-time weather analysis**, and **intelligent NGO matching algorithms** to evaluate food safety, prioritize urgent donations, and improve the efficiency of food rescue operations.
 
 ---
 
-## Technology Stack
+## 🌍 The Problem
 
-### Frontend Architecture
-- **Core Framework**: React 19 (TypeScript)
-- **Tooling**: Vite for optimized builds and development.
-- **Interface Design**: Tailwind CSS for responsive layout and Framer Motion for interface transitions.
-- **GIS Integration**: Leaflet.js and React-Leaflet for geospatial visualization.
-- **Authentication**: Role-Based Access Control (RBAC) via Firebase Authentication.
+Millions of meals are wasted every day while many people continue to face food insecurity.
 
-### Backend Infrastructure
-- **Runtime Environment**: Node.js with Express.js.
-- **Database Architecture**: Google Firebase Firestore (NoSQL) for real-time document synchronization.
-- **Administrative Logic**: Firebase Admin SDK for secure server-side operations and user management.
-- **External API Integration**: Fetch API for Gemini LLM, Open-Meteo, and Nominatim services.
+Current food donation processes are often:
+
+* Manual and slow
+* Difficult for NGOs to discover
+* Lacking food safety assessment
+* Inefficient in matching donors and recipients
+
+As a result, usable food is frequently discarded before it can reach people who need it.
 
 ---
 
-## Project Structure
+## 💡 The Solution
+
+ZeroHunger creates a real-time bridge between food donors and NGOs.
+
+The platform:
+
+✅ Evaluates food safety using AI
+
+✅ Considers environmental conditions such as temperature
+
+✅ Calculates donation urgency levels
+
+✅ Matches food providers with suitable NGOs
+
+✅ Helps ensure surplus food reaches people before it becomes unsafe
+
+---
+
+## ✨ Key Features
+
+### 🤖 AI Food Safety Assessment
+
+Uses Google Gemini AI to analyze:
+
+* Food type
+* Preparation time
+* Quantity
+* Storage conditions
+
+and generate:
+
+* Risk classifications
+* Remaining safe consumption windows
+* Storage recommendations
+* Distribution guidance
+
+---
+
+### 🌡️ Weather-Aware Risk Analysis
+
+Integrates real-time weather data using Open-Meteo API.
+
+The system:
+
+* Retrieves local temperature information
+* Calculates environmental impact on food quality
+* Adjusts food safety scores dynamically
+* Increases urgency for highly perishable donations
+
+---
+
+### 📍 Smart NGO Matching
+
+Automatically matches food donations using:
+
+* Geographic proximity
+* NGO storage capacity
+* Donation quantity
+* Food safety urgency
+
+This ensures that food reaches the most suitable NGO as quickly as possible.
+
+---
+
+### 🗺️ Interactive Food Map
+
+NGOs can:
+
+* View nearby food donations
+* Locate donors on an interactive map
+* Discover best-match opportunities
+* Track available rescue operations
+
+---
+
+### 🔐 Role-Based Access Control
+
+Separate dashboards for:
+
+* Restaurants / Donors
+* NGOs
+* Administrators
+
+powered by Firebase Authentication.
+
+---
+
+### 📊 Administrative Analytics
+
+Admins can monitor:
+
+* Active food listings
+* Registered users
+* Food rescue statistics
+* Distribution activity
+* Platform performance
+
+---
+
+## 🏗️ System Architecture
 
 ```text
-├── backend
-│   ├── src
-│   │   ├── server.js          # Primary API entry point and algorithmic logic
-│   │   ├── foodExpiry.js      # Heuristic database for localized food items
-│   │   └── seed.js            # Database initialization and mock data generation
-│   ├── package.json           # Node.js dependencies and scripts
-│   └── serviceAccount.json    # Firebase administrative credentials
-└── frontend
-    ├── src
-    │   ├── pages              # Role-specific dashboard implementations
-    │   ├── components         # Atomic UI components and layout providers
-    │   ├── lib                # Core library configurations (Firebase, RBAC)
-    │   └── types              # TypeScript interface definitions
-    ├── tailwind.config.js     # Design system configuration
-    └── package.json           # Frontend dependencies and Vite configuration
+Restaurant / Donor
+        │
+        ▼
+Create Food Post
+        │
+        ▼
+AI Safety Assessment
+(Google Gemini)
+        │
+        ▼
+Weather Analysis
+(Open-Meteo API)
+        │
+        ▼
+Food Safety Score
+        │
+        ▼
+Matching Engine
+(Haversine Distance + NGO Capacity)
+        │
+        ▼
+Best NGO Match
+        │
+        ▼
+Pickup & Distribution
 ```
 
 ---
 
-## Installation and Execution
+## 📸 Screenshots
+
+### Landing Page
+
+> <img width="1924" height="1003" alt="image" src="https://github.com/user-attachments/assets/34fdfbea-d3e1-46f6-b988-121ed7fb72bc" />
+
+### Authentication System
+
+> <img width="630" height="575" alt="image" src="https://github.com/user-attachments/assets/dd48c8ee-335e-4858-930a-19d8dbd8f3f4" />
+
+
+### NGO Dashboard
+
+> <img width="1496" height="894" alt="image" src="https://github.com/user-attachments/assets/495afa8c-b7ef-400a-8449-d554c5fda061" />
+
+
+### Admin Dashboard
+
+> <img width="1117" height="958" alt="image" src="https://github.com/user-attachments/assets/4e3de1f4-d85d-4594-8cf9-4779e0031afa" />
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React 19
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+* React Leaflet
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database & Authentication
+
+* Firebase Firestore
+* Firebase Authentication
+* Firebase Admin SDK
+
+### AI & APIs
+
+* Google Gemini 1.5 Flash
+* Open-Meteo API
+* OpenStreetMap Nominatim API
+
+### Mapping & Geospatial
+
+* Leaflet.js
+* React Leaflet
+* Haversine Distance Formula
+
+---
+
+## 📂 Project Structure
+
+```text
+ZeroHunger
+│
+├── backend
+│   ├── src
+│   │   ├── server.js
+│   │   ├── foodExpiry.js
+│   │   └── seed.js
+│   └── package.json
+│
+└── frontend
+    ├── src
+    │   ├── pages
+    │   ├── components
+    │   ├── lib
+    │   └── types
+    └── package.json
+```
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js version 18.0.0 or higher.
-- A configured Firebase project with Firestore and Authentication enabled.
-- A valid Google Gemini API Key.
 
-### Initial Setup
-1. **Extract Project Files**: Decompress the `Main app.zip` archive into your desired workspace.
-2. **Directory Navigation**: Open a terminal and navigate to the root of the extracted directory.
-
-### Backend Configuration
-1. **Navigate to Directory**: `cd backend`
-2. **Install Dependencies**: `npm install`
-3. **Environment Setup**: Create a `.env` file with the following parameters:
-   ```env
-   PORT=5000
-   GEMINI_API_KEY=your_gemini_api_key
-   # Path to your Firebase service account JSON file
-   GOOGLE_APPLICATION_CREDENTIALS=./serviceAccount.json
-   ```
-4. **Initialize Server**: `npm run dev`
-
-### Frontend Configuration
-1. **Navigate to Directory**: `cd ../frontend`
-2. **Install Dependencies**: `npm install`
-3. **Environment Setup**: Create a `.env` file containing your Firebase client-side credentials:
-   ```env
-   VITE_FIREBASE_API_KEY=your_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_domain
-   VITE_FIREBASE_PROJECT_ID=your_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_bucket
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
-   ```
-4. **Execute Application**: `npm run dev`
+* Node.js 18+
+* Firebase Project
+* Google Gemini API Key
 
 ---
 
-## API Documentation (Selected Endpoints)
+### Backend Setup
 
-| Endpoint | Method | Description |
-| :--- | :--- | :--- |
-| `/api/match` | POST | Executes the NGO matching algorithm for a specific food post. |
-| `/api/predict-expiry` | POST | Interfaces with Gemini AI to determine food safety windows. |
-| `/api/food-safety-score` | POST | Calculates an aggregate safety score incorporating weather data. |
-| `/health` | GET | Returns the operational status of the backend API. |
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file:
+
+```env
+PORT=5000
+
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+
+GOOGLE_APPLICATION_CREDENTIALS=./serviceAccount.json
+```
+
+Start backend:
+
+```bash
+npm run dev
+```
 
 ---
 
-## Interface Snapshots
+### Frontend Setup
 
-Standardized view of the platform interfaces across different user roles.
+```bash
+cd frontend
+npm install
+```
 
-| Administrative Interface | Restaurant Management | NGO Operational View |
-| :--- | :--- | :--- |
-| [Placeholder for Admin Dashboard] | [Placeholder for Restaurant Dashboard] | [Placeholder for NGO Activity] |
+Create a `.env` file:
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+Run frontend:
+
+```bash
+npm run dev
+```
 
 ---
 
-## License
+## 📡 API Endpoints
 
-This project is distributed under the ISC License.
+| Endpoint                 | Method | Description                          |
+| ------------------------ | ------ | ------------------------------------ |
+| `/api/match`             | POST   | Match food donations with NGOs       |
+| `/api/predict-expiry`    | POST   | AI-powered food safety analysis      |
+| `/api/food-safety-score` | POST   | Calculate weather-aware safety score |
+| `/health`                | GET    | API health status                    |
+
+---
+
+## 🎯 What I Learned
+
+Through this project, I gained practical experience with:
+
+* Full-Stack Application Development
+* Firebase Authentication & Firestore
+* Large Language Model Integration
+* Geospatial Calculations
+* Weather API Integration
+* Role-Based Access Control
+* Multi-user System Design
+* AI-Assisted Decision Workflows
+
+---
+
+## 🔮 Future Improvements
+
+* Route optimization for pickups
+* Volunteer management system
+* Mobile application
+* Real-time notifications
+* AI image-based food quality assessment
+* Advanced analytics dashboard
+
+---
+
+## 🧠 Development Approach
+
+This project was rapidly prototyped using AI-assisted development tools and then customized, tested, and extended with additional functionality including AI-powered food safety assessment, weather-aware scoring, and NGO matching workflows.
+
+---
+
+## 👨‍💻 Author
+
+**Mohamed Ansari**
+
+🎓 B.E Computer Science & Engineering
+📚 IIT Madras BS Degree in Programming & Data Science
+
+GitHub: https://github.com/801PEC
+
+---
+
+### ⭐ If you found this project interesting, consider giving it a star.
