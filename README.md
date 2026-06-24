@@ -245,6 +245,8 @@ ZeroHunger
 
 ---
 
+- Download the Main Project.zip and extract it and follow the below steps!
+
 ### Backend Setup
 
 ```bash
