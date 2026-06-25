@@ -313,10 +313,9 @@ npm run dev
 
 Through this project, I gained practical experience with:
 
-* Full-Stack Application Development
+* Vibe-Coding to Develop Full-Stack applications
 * Firebase Authentication & Firestore
 * Large Language Model Integration
-* Geospatial Calculations
 * Weather API Integration
 * Role-Based Access Control
 * Multi-user System Design
